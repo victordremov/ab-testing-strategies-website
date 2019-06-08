@@ -1,0 +1,29 @@
+{% extends "landing/base_generic.html" %}
+
+{% block header %}
+    <h1>Стратегии AB-тестирования</h1>
+    <p>AB-тестирование вариантов email-рассылок с помощью статистических тестов и многоруких бандитов.</p>
+{% endblock header %}
+
+{% block content %}
+    <header><h2>Сравнение вариантов писем в email рассылке</h2></header>
+    <p>
+        Исследуется такая задача: есть несколько вариантов рассылки.
+        Варианты в целом похожи, но отличаются в нюансах: цвет фона, расположением картинок, товарами в блоке
+        рекомендаций, темой письма.
+        У рассылки есть цель: увеличить продажи, посетить сайт, а возможно, просто прочесть письмо и напомнить об
+        отправителе.
+        Мы не знаем изначально, какой из вариантов лучше, а каждому клиенту можно отправить только один из вариантов.
+    <p>
+        Как нужно действовать, чтобы получить наилучший результат?
+    </p>
+    <div id="ctr-plot"></div>
+{% endblock content %}
+
+{% block javascript %}
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/make-ctr-plot.js' %}"></script>
+{% endblock javascript %}
