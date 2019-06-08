@@ -10,3 +10,6 @@ html {
 header h1 {
     text-align: center;
 }
+img {
+    max-width: 800px;
+}

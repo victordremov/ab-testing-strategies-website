@@ -1,4 +1,5 @@
 {% extends "landing/base_generic.html" %}
+{% load static %}
 
 {% block header %}
     <h1>Стратегии AB-тестирования</h1>
@@ -84,16 +85,25 @@
     <section id="simulator">
         <header><h2>Симулятор AB-теста</h2></header>
         Секция в разработке
-        <div id="ctr-plot"></div>
+        <section>
+            <header><h3>Чего тут будет</h3></header>
+            <img src="{% static 'images/ab-test-with-z-test-stub.jpg' %}" alt="Графики для Z-теста">
+            <img src="{% static 'images/ab-test-with-bandits-stub.jpg' %}" alt="Графики для AB-теста">
+        </section>
+        <section>
+            <header><h3>Заготовка под график, только данные другие</h3></header>
+            <div id="ctr-plot"></div>
+        </section>
+
     </section>
 
 
 {% endblock content %}
 
 {% block javascript %}
+
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
-    {% load static %}
     <script type="text/javascript" src="{% static 'js/make-ctr-plot.js' %}"></script>
 {% endblock javascript %}
