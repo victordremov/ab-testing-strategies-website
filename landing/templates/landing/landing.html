@@ -7,6 +7,7 @@
 {% endblock header %}
 
 {% block content %}
+    <!--
     <section id="abstract">
         <header><h2>Улучшение email-рассылок с помощью AB-тестирования</h2></header>
         <p>
@@ -29,7 +30,6 @@
     </section>
     <section id="introduction">
         <header><h2>Введение</h2></header>
-        <!--Тут нужно поживее расписать, а то как в учебнике!-->
         <p>
             Пусть есть несколько вариантов рассылки.
             Варианты в целом похожи, но отличаются в нюансах: цвет фона, расположением картинок, товарами в блоке
@@ -82,28 +82,123 @@
         <header><h2>Сравнение AB-тестов с бандитскими</h2></header>
         Секция в разработке
     </section>
-    <section id="simulator">
-        <header><h2>Симулятор AB-теста</h2></header>
-        Секция в разработке
-        <section>
-            <header><h3>Чего должно быть</h3></header>
-            <img src="{% static 'images/ab-test-with-z-test-stub.jpg' %}" alt="Графики для Z-теста">
-            <img src="{% static 'images/ab-test-with-bandits-stub.jpg' %}" alt="Графики для AB-теста">
-        </section>
-        <section>
-            <header><h3>Как должны выглядеть графики</h3></header>
-            <div id="ctr-plot"></div>
-        </section>
-
+    -->
+    <section>
+        <header><h2><a id="abstract">
+            Содержание
+        </a></h2></header>
+        <p>
+            Статья посвящена бандитскому AB-тестированию в email-маркетинге. Мы расскажем, в чем суть этого метода, чем
+            он отличается от тестирования с помощью статистических тестов, а также сравним их по эффективности для
+            бизнеса, простоте применения и распространенности инструментов.
+        </p>
+        <p>
+            В последнем разделе размещен симулятор AB-тестирования. Вы можете поэкспериментировать с бандитскими
+            AB-тестами и сравнить их по эффективности со AB-тестированием, основанным на статистических тестах.
+            В симулятор можно ввести данные по прошедшему AB-тесту и увидеть, какие результаты принесет внедрение
+            бандитских тестов в вашей компании.
+        </p>
     </section>
-
-
+    <section>
+        <header><h2>Конвейер улучшения email-рассылок</h2></header>
+        Легче всего объяснить значение AB-тестирование на общей картине.
+        <figure>
+            <img src="{% static 'images/continious-improvement-cycle.jpg' %}" alt="Графики для Z-теста">
+        </figure>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Шаг</th>
+                <th>Пример</th>
+                <th>Исходный шаблон</th>
+                <th>Новый шаблон</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Генерация идеи</td>
+                <td>Персонализируем приветствие</td>
+                <td>Здравствуйте!</td>
+                <td>Здравствуйте, Иван!</td>
+            </tr>
+            <tr>
+                <td>Формулировка гипотезы</td>
+                <td>
+                    Персонализированное приветствие увеличивает долю перешедших по ссылке в письме на сайт среди
+                    клиентов с известным именем.
+                </td>
+                <td>
+                    7.0% (считаем по историческим данным)
+                </td>
+                <td>
+                    8.0% или выше (предполагаем, исходя из личного опыта и знаний особенностей бизнеса)
+                </td>
+            </tr>
+            <tr>
+                <td>Подготовка эксперимента: сверстать письмо по старому и новому шаблону</td>
+                <td>Изменяем приветствие в шаблоне письма</td>
+                <td>Здравствуйте!</td>
+                <td>Здравствуйте@if( Recipient.FirstName != null ){, Recipient.Name!} @else{!} @endif</td>
+            </tr>
+            <tr>
+                <td>Проверка гипотезы: AB-тестирование</td>
+                <td>Считаем на калькуляторе АB-тестов, сколько нужно отправить писем, чтобы
+                    повышение CTR c 7% до 8% было на 95% статистически значимо.
+                    Для этого примера получаем 10220 писем на вариант
+                </td>
+                <td>Выбираем 10220 случайных клиентов и отсылаем не персонализированное письмо</td>
+                <td>Выбираем 10220 случайных клиентов и отсылаем персонализированное письмо</td>
+            </tr>
+            <tr>
+                <td>Анализ результатов: проверяем, достигнут ли желаемый эффект, ищем сегменты клиентов, которые дали
+                    наибольший вклад.
+                </td>
+                <td>
+                    В нашем примере CTR выросла и статистическая значимость выше 95% - значит персонализация приветствия
+                    дествительно работает. Остаток писем отправляем по персонализированному шаблону
+                </td>
+                <td>8.8%</td>
+                <td>9.7%</td>
+            </tr>
+            <tr>
+                <td>Внедрение
+                </td>
+                <td colspan="3">
+                    Сохраняем улучшенный шаблон и в дальнейшем модифицируем уже его
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <header><h2>Чего должно быть</h2></header>
+        <figure>
+            <img src="{% static 'images/ab-test-with-z-test-stub.jpg' %}" alt="Графики для Z-теста">
+        </figure>
+    </section>
+    <section>
+        <header><h2>Чего должно быть</h2></header>
+        <figure>
+            <img src="{% static 'images/ab-test-with-z-test-stub.jpg' %}" alt="Графики для Z-теста">
+        </figure>
+        <figure>
+            <img src="{% static 'images/ab-test-with-bandits-stub.jpg' %}" alt="Графики для AB-теста">
+        </figure>
+    </section>
+    <section>
+        <header><h3>Как должны выглядеть графики</h3></header>
+        <div id="ctr-plot"></div>
+    </section>
 {% endblock content %}
 
 {% block javascript %}
-
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
-    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script type="text/javascript" src="{% static 'js/make-ctr-plot.js' %}"></script>
 {% endblock javascript %}
+
+{% block navigation %}
+    <a href="{% url 'index' %}#abstract">Наверх</a>
+    <a href="{% url 'index' %}#simulator">Симулятор</a>
+{% endblock navigation %}

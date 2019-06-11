@@ -1,15 +1,21 @@
-.sidebar-nav {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
+:read-only {
+    --max-width: 800px;
 }
+
+
 html {
-    max-width: 800px;
+    max-width: var(--max-width);
     margin: auto;
+    padding: 0 20px;
+}
+.container-fluid {
+    padding: 0;
+}
+figure * {
+    width: 50%;
+    max-width: var(--max-width);
+    position: center;
 }
 header h1 {
     text-align: center;
-}
-img {
-    max-width: 800px;
 }
