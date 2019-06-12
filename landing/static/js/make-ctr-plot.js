@@ -8,6 +8,6 @@ Highcharts.chart('ctr-plot', {
         text: 'Reward over sent emails'
     },
     data: {
-        csvURL: 'victordremov.pythonanywhere.com/landing/chart-data.csv'
+        csvURL: 'https://victordremov.pythonanywhere.com/landing/chart-data.csv'
     }
 });
