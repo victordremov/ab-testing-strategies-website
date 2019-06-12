@@ -12,5 +12,7 @@ def landing(request):
 
 def get_chart_data(request):
     table = run_experiment()
-    csv = table.to_csv(index=False)
+    csv = table.loc[:, ["cumulative_sent_emails_count", "cumulative_reward"]].to_csv(
+        index=False
+    )
     return HttpResponse(content=csv, content_type="text/plain")

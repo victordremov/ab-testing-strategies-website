@@ -1,17 +1,13 @@
 Highcharts.chart('ctr-plot', {
     chart: {
-        type: 'line'
+        animation: {
+            duration: 5000
+        }
     },
     title: {
-        text: 'CTR'
+        text: 'Reward over sent emails'
     },
-
-    subtitle: {
-        text: 'Data input from a remote CSV file'
-    },
-
     data: {
-        csvURL: 'http://127.0.0.1:8000/landing/chart-data.csv',
-        enablePolling: true
+        csvURL: 'http://127.0.0.1:8000/landing/chart-data.csv'
     }
 });
