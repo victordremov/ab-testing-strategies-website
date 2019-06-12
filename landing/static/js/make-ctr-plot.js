@@ -1,9 +1,9 @@
 Highcharts.chart('ctr-plot', {
     chart: {
-        type: 'spline'
+        type: 'line'
     },
     title: {
-        text: 'Live Data (CSV)'
+        text: 'CTR'
     },
 
     subtitle: {
