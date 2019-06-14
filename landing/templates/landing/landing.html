@@ -186,16 +186,26 @@
         </figure>
     </section>
     <section>
-        <header><h3>Как должны выглядеть графики</h3></header>
-        <div id="ctr-plot"></div>
+        <header><h3>Симулятор AB-тестов</h3></header>
+
+        <form action="{% url 'chart-data' %}" method="post" id="run-experiment-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Запустить">
+        </form>
+        <div id="cumulative-reward-over-sent-mails-plot"></div>
     </section>
+
 {% endblock content %}
 
 {% block javascript %}
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/data.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script type="text/javascript" src="{% static 'js/make-ctr-plot.js' %}"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/data.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script type="text/javascript" src={% static 'js/plots.js' %}></script>
+    <script type="text/javascript" src={% static 'js/ajax-refresh-chart.js' %}></script>
 {% endblock javascript %}
 
 {% block navigation %}
